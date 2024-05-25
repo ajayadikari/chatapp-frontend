@@ -1,0 +1,14 @@
+.notfound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.notfound p{
+    font-size: 50px;
+}
+
+.notfound p span{
+    color: red;
+}

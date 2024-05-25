@@ -1,0 +1,90 @@
+.register {
+    background-color: black(217, 215, 215);
+}
+
+
+form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+    padding: 0px 30px;
+    box-shadow: 1px 0px 5px 1px rgb(217, 215, 215);
+
+}
+
+form div input {
+    width: 350px;
+    height: 35px;
+    border-radius: 2px;
+    border: none;
+    margin: 5px 0;
+    box-shadow: 1px 0px 5px 1px rgb(217, 215, 215);
+    padding: 10px;
+    font-size: 18px;
+}
+
+form div input:focus {
+    outline: none;
+}
+
+form button, input[type=submit] {
+    width: 300px;
+    margin: 10px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.pic {
+    /* height: 100px; */
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.pic input{
+    height: 50px;
+}
+
+.login{
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    font-size: 50px;
+    transition: 0.2s all ease;
+}
+
+.login:hover{
+    color: green;
+}
+
+.pass{
+    position: relative;
+}
+
+.pass i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    font-size: 20px;
+}
+
+.loader{
+    width: 30px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+}

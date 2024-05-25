@@ -1,0 +1,154 @@
+.profile {
+    position: fixed;
+    bottom: 2px;
+    left: 0;
+    box-shadow: 1px 1px 5px 2px rgb(224, 222, 222);
+    border-radius: 2px;
+    /* border: 1px solid black; */
+    width: 28.7%;
+    z-index: 2;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    overflow: auto;
+}
+
+.profile.deactivate {
+    display: none;
+}
+
+.profile.activate {
+    height: 100px;
+}
+
+.profile .closebutton {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.picContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.picContainer img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.picContainer .pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.picContainer .noprofile,
+.edit {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 130px;
+    overflow: hidden;
+    background-color: rgb(239, 235, 235);
+}
+
+.picContainer:hover .noprofile {
+    display: none;
+}
+
+.picContainer:hover .edit {
+    display: flex;
+}
+
+.picContainer .edit {
+    display: none;
+    font-size: 100px;
+    align-items: center;
+}
+
+
+
+.picContainer input[type=file] {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.inner {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.inner .box p {
+    margin: 5px 0;
+}
+
+.box {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    padding: 5px 30px;
+}
+
+.inner .box input {
+    width: 100%;
+    height: 35px;
+    padding: 0 10px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.inner .box input:focus {
+    outline: none;
+}
+
+
+.box i {
+    position: absolute;
+    right: 0px;
+    font-size: 0px;
+    transition: all 0.1s ease-in;
+    cursor: pointer;
+}
+
+.box:hover i {
+    font-size: 18px;
+}
+
+
+.btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.btns button {
+    width: 40%;
+    padding: 5px;
+    font-size: 16px;
+    background-color: white;
+    transition: all 0.1s ease-in;
+}
+
+.btns button:hover {
+    background-color: rgb(224, 222, 222);
+}

@@ -1,0 +1,74 @@
+.optionsbar {
+    position: fixed;
+    bottom: 2px;
+    left: 0;
+    box-shadow: 1px 1px 5px 2px rgb(224, 222, 222);
+    border-radius: 2px;
+    /* border: 1px solid black; */
+    width: 28.7%;
+    z-index: 2;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.optionsbar .left {
+    border: 1px solid black;
+    display: flex;
+}
+
+.optionsbar .left button {
+    width: 80px;
+    height: 20px;
+    background-color: white;
+    border-radius: 2px;
+    border: none;
+    border-right: 1px solid black;
+    cursor: pointer;
+}
+
+.optionsbar .left button i {
+    margin: 0 3px;
+}
+
+.leftarrow {
+    transform: rotateY(180deg);
+}
+
+.optionsbar .left button:hover {
+    box-shadow: 1px 1px 5px 2px rgb(224, 222, 222);
+}
+
+.optionsbar .left .deactive{
+    background-color: rgb(175, 171, 171);
+}
+
+.optionsbar .right{
+    width: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.optionsbar .right i{
+    border-radius: 50%;
+    font-size: 18px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.optionsbar .right i:hover{
+    box-shadow: 1px 1px 7px 3px rgb(224, 222, 222);
+}
+
+.optionsbar.deactivate{
+    display: none;
+}
+
+.optionsbar.activate{
+    display: flex;
+}
+
+

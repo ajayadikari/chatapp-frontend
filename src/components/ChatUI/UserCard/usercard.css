@@ -1,0 +1,66 @@
+.usercard {
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: all 0.1s ease-out;
+    cursor: pointer;
+    border: 1px solid rgb(170, 163, 163);
+}
+
+.active{
+    background-color: rgb(241, 237, 237);
+    transform: translateY(-1px);
+}
+
+.usercard:hover{
+    background-color: rgb(247, 246, 246);
+    transform: translateY(-1px);
+}
+
+.profilepic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.profilepic i{
+    font-size: 38px;
+    color: gray;
+    position: absolute;
+    top: 11px;
+}
+
+.profilepic img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: none;
+}
+
+.userCardRight{
+    width: 100%;
+    height: 100%;
+    padding: 0px 10px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+
+
+
+
+

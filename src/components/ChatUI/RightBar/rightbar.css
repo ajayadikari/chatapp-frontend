@@ -1,0 +1,39 @@
+.rightbar {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-left: 1px solid black;
+}
+
+.chatboxContainer {
+    height: 100vh;
+    overflow: auto;
+    /* background-color: red; */
+
+}
+
+.chatbox {
+    background-color: rgb(241, 237, 237);
+    height: 100%;
+    overflow: auto;
+    padding: 0 20px;
+}
+
+.chatbox::-webkit-scrollbar {
+    width: 3px;
+}
+
+.chatbox::-webkit-scrollbar-track {
+    background: white;
+}
+
+.chatbox::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+}
+
+.chatbox::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
