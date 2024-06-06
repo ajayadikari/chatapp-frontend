@@ -9,7 +9,7 @@ import { webserver } from '../../constants';
 import axiosInstance from '../../axiosInstances';
 import { setCn } from '../../Redux/ChatSlice';
 import { appendMsg } from '../../Redux/ChatSlice';
-import { json } from 'react-router-dom';
+import useScreenWidth from '../../Hooks/useScreenWidth';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -18,6 +18,19 @@ const Home = () => {
     const sendercn = useSelector(store => store.chat.sendercn);
     const receivercn = useSelector(store => store.chat.receivercn);
     const [socket, setSocket] = useState(null);
+    const [showLeft, setShowLeft] = useState(true)
+    const width = useScreenWidth()
+    const [smallScreen, setSmallScreen] = useState(false)
+
+
+    useEffect(()=>{
+        window.innerWidth <= 525 && setSmallScreen(true)
+    }, [])
+
+    useEffect(() => {
+        if (width <= 530) setShowLeft(true)
+    }, [])
+
 
     useSetAuth();
 
@@ -34,18 +47,14 @@ const Home = () => {
                 socket.send(obj);
             }
             else {
-                // const fr = new FileReader()
-                // fr.onload = (e) => {
-                    const raw = {
-                        receivercn: receivercn,
-                        msg: data,
-                        file: true
-                    };
-                    console.log(data)
-                    const obj = JSON.stringify(raw);
-                    socket.send(obj);
-                // }
-                // fr.readAsDataURL(data)
+                const raw = {
+                    receivercn: receivercn,
+                    msg: data,
+                    file: true
+                };
+                console.log(data)
+                const obj = JSON.stringify(raw);
+                socket.send(obj);
             }
         }
     };
@@ -65,6 +74,7 @@ const Home = () => {
             };
 
             newSocket.onmessage = (e) => {
+                console.log("recieved from the server")
                 const jsonObj = JSON.parse(e.data)
                 const receiver = localStorage?.getItem('receiver')
                 let obj = {}
@@ -89,6 +99,10 @@ const Home = () => {
             };
 
             newSocket.onclose = (e) => {
+                console.log("WebSocket closed. Details:");
+                console.log("Code:", e.code);
+                console.log("Reason:", e.reason);
+                console.log("Was Clean:", e.wasClean);
                 toast.error('Server disconnected!')
             }
 
@@ -131,11 +145,21 @@ const Home = () => {
         return cleanup;
     }, [username]);
 
+
+    const onHamBurgerClick = () => {
+        if (showLeft) setShowLeft(false)
+        else setShowLeft(true)
+    }
+
+
+
+
     return (
         <div>
             <div className="chatSpace">
-                <LeftBar />
-                <RightBar sendMessage={sendMessage} />
+                <i className={`${showLeft ? ('fa-solid fa-bars') : ("fa-solid fa-arrow-right back")} hamburger`} onClick={onHamBurgerClick}></i>
+                <LeftBar smallScreen={smallScreen} showLeft={showLeft} setShowLeft={setShowLeft} />
+                <RightBar smallScreen={smallScreen} sendMessage={sendMessage} showLeft={showLeft} />
             </div>
         </div>
     );

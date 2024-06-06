@@ -4,3 +4,26 @@
     height: 100vh;
     /* background-color: black; */
 }
+
+.hamburger {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 34px;
+    z-index: 2;
+}
+
+
+@media only screen and (max-width: 530px) {
+    .hamburger {
+        display: block;
+        background-color: white;
+        border-radius: 50%;
+        
+    }
+    .hamburger.back{
+        transform: rotateY(180deg);
+        border: 1px solid black;
+    }
+}

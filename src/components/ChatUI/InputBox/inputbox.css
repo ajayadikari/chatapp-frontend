@@ -14,7 +14,7 @@
     outline: none;
 }
 
-.msgbox > i {
+.msgbox>i {
     position: absolute;
     right: 170px;
     top: 50%;
@@ -43,7 +43,7 @@
     outline: none;
 }
 
-.msgbox > i input {
+.msgbox>i input {
     /* visibility: hidden; */
     position: relative;
     right: 20px;
@@ -54,7 +54,32 @@
     /* display: flex;
     justify-content: center;
     align-items: center; */
-    background-color: red;
+    /* background-color: red; */
     /* height: 100px; */
-    opacity: 0;
+    /* opacity: 0; */
+    width: 10px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .msgbox .btn {
+        display: none;
+    }
+
+    .msgbox input {
+        width: 100%;
+    }
+
+    .msgbox>i,
+    .msgbox>i input {
+        right: 1%;
+        width: 40px;
+        
+    }
+    .msgbox>i input{
+        background-color: green;
+        position: absolute;
+        opacity: 0;
+    }
+
 }

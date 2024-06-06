@@ -17,7 +17,7 @@ const useSetAuth = () => {
         const refresh = localStorage?.getItem('refresh');
         if ((access && refresh) && (refresh || refresh?.length != 0)) {
             const decode = jwtDecode(access)
-            dispatch(setUsername({ 'username': decode.username }))
+            dispatch(setUsername({ 'username': decode?.username }))
             dispatch(setAuth({ access, refresh }));
         } else {
             toast.error('Please login to access');

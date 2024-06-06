@@ -31,10 +31,10 @@ const OptionsBar = ({ setShowProfile, showProfile, has_next, page, setPage }) =>
             <div className="left">
                 <button className={`${page <= 1 && 'deactive'}`} title="go to previous page" onClick={() => paginator(false)}>
                     <i class="fa-solid fa-arrow-right leftarrow"></i>
-                    prev
+                    <span>prev</span>
                 </button>
                 <button className={`${!has_next && 'deactive'}`} title="go to next page" onClick={() => paginator(true)}>
-                    next
+                    <span>next</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>

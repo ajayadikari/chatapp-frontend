@@ -24,7 +24,7 @@ const InputBox = ({ sender, receiver, sendMessage }) => {
             formdata.append("receiver", receiver)
             formdata.append("text", msg)
             try {
-                // const res = await axiosInstance.post(`api/v1/chat/store-msg/0`, formdata)
+                const res = await axiosInstance.post(`api/v1/chat/store-msg/0`, formdata)
                 setMsg('')
                 dispatch(appendMsg({ 'msg': data }))
                 sendMessage(false, msg)

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './message.css'
+import server from '../../constants'
 
 const Message = ({ chat, username, sender }) => {
     // console.log(chat?.file)
@@ -15,7 +16,7 @@ const Message = ({ chat, username, sender }) => {
         if (chat && chat.is_file && chat.file != null === true) findext()
     }, [chat])
     return (
-        <div className={`message ${username != sender && 'right'}`}>
+        <div className={`message ${username != sender ? ('placeRight') : ('placeLeft')}`}>
             {/* <div className={`msg`}>{msg}</div> */}
             {
                 !chat?.is_file ? (
@@ -24,11 +25,11 @@ const Message = ({ chat, username, sender }) => {
                     <>
                         {
                             (ext !== 'pdf' && ext != 'docx') ? (
-                                <a href={`http://localhost:8000${chat?.file}`} target='_blank'>
-                                    <img src={`http://localhost:8000${chat?.file}`} className='file' alt="img file" srcset="" />
+                                <a href={`${server}${chat?.file}`} target='_blank'>
+                                    <img src={`${server}${chat?.file}`} className='file' alt="img file" srcset="" />
                                 </a>
                             ) : (
-                                <a href={`http://localhost:8000${chat?.file}`} target='_blank' className='file'>{
+                                <a href={`${server}${chat?.file}`} target='_blank' className='file'>{
                                     <>
                                         <i class="fa-regular fa-folder-open"></i>
                                         <>{filename.substring(0, 10)}...{ext}</>

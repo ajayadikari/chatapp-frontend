@@ -43,14 +43,14 @@ const Login = () => {
             <h1>Login</h1>
             <div>
                 {/* <label htmlFor="username" >Username</label> */}
-                <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder='Enter your username' required />
+                <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} placeholder='Enter your username' required />
             </div>
             <div>
                 {/* <label htmlFor="password" >Password</label> */}
                 <div className='pass'>
                     {/* <label htmlFor="">Password: </label> */}
                     {showPass ? (<i class="fa-regular fa-eye" onClick={() => setShowpass(!showPass)}></i>) : (<i class="fa-regular fa-eye-slash" onClick={() => setShowpass(!showPass)}></i>)}
-                    <input type={`${showPass ? 'text' : 'password'}`} onChange={(e) => setPassword(e.target.value)} required placeholder='Enter your password'></input>
+                    <input type={`${showPass ? 'text' : 'password'}`} value={password} onChange={(e) => setPassword(e.target.value)} required placeholder='Enter your password'></input>
                 </div>
             </div>
             <button type='submit'>{loading ? (<div className='loader'>{loader}</div>) : ('Login')}</button>

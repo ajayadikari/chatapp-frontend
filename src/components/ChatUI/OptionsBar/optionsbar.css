@@ -41,34 +41,72 @@
     box-shadow: 1px 1px 5px 2px rgb(224, 222, 222);
 }
 
-.optionsbar .left .deactive{
+.optionsbar .left .deactive {
     background-color: rgb(175, 171, 171);
 }
 
-.optionsbar .right{
+.optionsbar .right {
     width: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.optionsbar .right i{
+.optionsbar .right i {
     border-radius: 50%;
     font-size: 18px;
     padding: 3px;
     cursor: pointer;
 }
 
-.optionsbar .right i:hover{
+.optionsbar .right i:hover {
     box-shadow: 1px 1px 7px 3px rgb(224, 222, 222);
 }
 
-.optionsbar.deactivate{
+.optionsbar.deactivate {
     display: none;
 }
 
-.optionsbar.activate{
+.optionsbar.activate {
     display: flex;
 }
 
 
+
+@media screen and (max-width: 750px) {
+    .optionsbar {
+        position: absolute;
+        left: 0;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .optionsbar>.left,
+    .right {
+        flex-direction: column;
+        /* margin: 5px 0; */
+    }
+
+    .optionsbar>.left button,
+    .right i {
+        margin: 5px 0;
+    }
+
+    .optionsbar>.left button span {
+        display: none;
+    }
+
+    .optionsbar>.left {
+        border: none;
+    }
+
+    .optionsbar>.right {
+        width: 30px;
+    }
+
+    .optionsbar>.left button {
+        width: fit-content;
+    }
+}

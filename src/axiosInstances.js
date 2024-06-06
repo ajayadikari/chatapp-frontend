@@ -9,29 +9,53 @@ import { store } from "./Redux/store";
 const access = localStorage.getItem('access')
 const refresh = localStorage.getItem('refresh')
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:8000/',
+    baseURL: `${server}`,
     headers: {
         'Authorization': `Bearer ${access}`
     }
 });
 
 axiosInstance.interceptors.request.use(async req => {
-    const accessdecode = await jwtDecode(access)
-    const access_expired = await dayjs.unix(accessdecode.exp).diff(dayjs()) < 1;
-    if (!access_expired) return req
-    const refreshdecode = await jwtDecode(refresh)
-    const refresh_expired = dayjs.unix(refreshdecode.exp).diff(dayjs()) < 1;
-    if (!refresh_expired) {
-        const res = await axios.post(`${server}api/v1/token/refresh/`, { refresh: refresh })
-        req.headers.Authorization = 'Bearer ' + res.data.access
-        await localStorage.setItem('access', res.data.access)
-        return req
+    try {
+      let access = localStorage.getItem('access');
+      let refresh = localStorage.getItem('refresh');
+  
+      if (!access || !refresh) {
+        toast.error('Authentication tokens not found');
+        window.location.href = '/login';
+        return Promise.reject(new Error('Authentication tokens not found'));
+      }
+  
+      const accessDecode = jwtDecode(access);
+      const accessExpired = dayjs.unix(accessDecode.exp).diff(dayjs()) < 1;
+  
+      if (!accessExpired) {
+        req.headers.Authorization = `Bearer ${access}`;
+        return req;
+      }
+  
+      const refreshDecode = jwtDecode(refresh);
+      const refreshExpired = dayjs.unix(refreshDecode.exp).diff(dayjs()) < 1;
+  
+      if (refreshExpired) {
+        toast.error('Login expired');
+        window.location.href = '/login';
+        return Promise.reject(new Error('Refresh token expired'));
+      }
+  
+      const response = await axios.post(`${server}api/v1/token/refresh/`, { refresh });
+      const newAccess = response.data.access;
+  
+      localStorage.setItem('access', newAccess);
+      req.headers.Authorization = `Bearer ${newAccess}`;
+  
+      return req;
+    } catch (error) {
+      console.error('Error in request interceptor', error);
+      toast.error('An error occurred during token refresh');
+      window.location.href = '/login';
+      return Promise.reject(error);
     }
-    toast.error('Login expired')
-    window.location.href = '/login'
-})
-
-
-
-
-export default axiosInstance;
+  });
+  
+  export default axiosInstance;

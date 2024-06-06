@@ -7,14 +7,33 @@ import { setSelectedReceiver, setReceiverPic } from '../../../Redux/ChatSlice'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, setShowLeft, showLeft }) => {
 
     const dispatch = useDispatch()
     const username = localStorage.getItem('username')
     const [profilepic, setProfilepic] = useState(null)
     const selectedReceiver = useSelector(state => state.chat.receiver)
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    const [smallScreen, setSmallScreen] = useState(false)
+
+    // window.addEventListener('resize', () => {
+    //     setScreenWidth(window.innerWidth)
+    //     if (screenWidth < 530) setSmallScreen(true)
+    //     else if (screenWidth > 530) setSmallScreen(false)
+    //     console.log(smallScreen)
+    // })
+
+    useEffect(() => {
+        setScreenWidth(window.innerWidth)
+    }, [])
+
+    useEffect(() => {
+        if (screenWidth <= 530) setSmallScreen(true)
+        console.log(smallScreen)
+    }, [screenWidth])
 
     const clickHandler = async (receiver) => {
+        if (showLeft && smallScreen) setShowLeft(false)
         localStorage.setItem('receiver', receiver)
         dispatch(setSelectedReceiver({ 'username': receiver }))
         dispatch(setReceiverPic({ 'img': profilepic }))

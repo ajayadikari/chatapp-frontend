@@ -3,7 +3,7 @@ import './profile.css'
 import axiosInstance from "../../axiosInstances"
 import { toast } from "react-toastify"
 
-const Profile = ({ setShowProfile, showProfile }) => {
+const Profile = ({ setShowProfile, showProfile, smallScreen }) => {
     const [user, setUser] = useState(null)
     const [selected, setSelected] = useState([])
     const [edit, setEdit] = useState({})
@@ -105,7 +105,7 @@ const Profile = ({ setShowProfile, showProfile }) => {
 
 
     return (
-        <div ref={profileWindow} className={`profile ${showProfile ? '' : ('deactivate')}`}>
+        <div ref={profileWindow} className={`profile ${showProfile ? '' : ('deactivate')} ${smallScreen ? ('phone') : ('')}`}>
             <h1 onClick={maxWindow}>Profile</h1>
             <div className={`inner ${showProfile ? ('activate') : ('disable')}}`}>
                 <i class="fa-solid fa-x closebutton" onClick={() => closeProfile()}></i>
