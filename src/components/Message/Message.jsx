@@ -25,11 +25,11 @@ const Message = ({ chat, username, sender }) => {
                     <>
                         {
                             (ext !== 'pdf' && ext != 'docx') ? (
-                                <a href={`${server}${chat?.file}`} target='_blank'>
+                                <a href={`${server}${chat?.file ? chat.file.substring(1) : ''}`} target='_blank'>
                                     <img src={`${server}${chat?.file}`} className='file' alt="img file" srcset="" />
                                 </a>
                             ) : (
-                                <a href={`${server}${chat?.file}`} target='_blank' className='file'>{
+                                <a href={`${server}${chat?.file ? chat.file.substring(1) : ''}`} target='_blank' className='file'>{
                                     <>
                                         <i class="fa-regular fa-folder-open"></i>
                                         <>{filename.substring(0, 10)}...{ext}</>
